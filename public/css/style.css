@@ -16,7 +16,6 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 2rem;
-    background-color: #0c60d5;
 }
 
 nav .middle {
