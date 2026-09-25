@@ -31,4 +31,4 @@
 - `#2a9d8f` Vert
 - `#e9c46a` Jaune
 - `#f4a261` Orange
-- `#e76f51` Rouge# UQAC-1
+- `#e76f51` Rouge
