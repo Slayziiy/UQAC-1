@@ -5,7 +5,7 @@
   - Groupe ?
   - Gestion d'ami ?
 - Assurer une bonne communication entre 2 intermédiaires.
-- Créer/Se connecter 
+- Créer/Se connecter à un compte
 
 ## Secondaire :
 - Principe de point via question / activité + classement
