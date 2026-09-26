@@ -7,6 +7,12 @@
     font-family: 'Lexend', sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -38,4 +44,14 @@ nav .right a {
     color: #000;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: rgba(20, 20, 20, 0.1);
+    text-align: center;
+    padding: 12px;
 }
