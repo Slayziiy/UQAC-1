@@ -55,3 +55,18 @@ footer {
     text-align: center;
     padding: 12px;
 }
+
+/*Format mobile */
+@media screen and (max-width: 480px) {
+    padding: 1rem;
+}
+
+/* Format tablet */
+@media screen and (max-width: 768px) {
+    padding: 1.5rem;
+}
+
+/* Format desktop */
+@media screen and (min-width: 1024px) {
+    padding: 2rem;
+}
