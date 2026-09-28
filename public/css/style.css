@@ -54,11 +54,29 @@ main {
 
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+}
+
 .boxes {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 150px;
+    gap: 100px;
+    margin-top: 75px;
+
+    .left {
+        max-width: 450px;
+    }
+
+    .right {
+        max-width: 450px;
+
+        img {
+            border-radius: 20px;
+        }
+    }
 }
 
 footer {
@@ -69,8 +87,15 @@ footer {
 }
 
 /*Format mobile */
-@media screen and (max-width: 480px) {
-    padding: 1rem;
+@media screen and (max-width: 720px) {
+    .container {
+        gap: 50px;
+    }
+
+    .boxes {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* Format tablet */
