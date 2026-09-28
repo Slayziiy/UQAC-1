@@ -62,10 +62,11 @@ main {
 .boxes {
     display: flex;
     justify-content: space-around;
+    text-align: justify;
     flex-direction: row;
     margin-top: 75px;
     width: 100%;
-    /*outline: 1px solid red; */
+    outline: 1px solid red; 
 
     .left {
         max-width: 450px;
@@ -91,6 +92,7 @@ footer {
     .boxes {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -98,5 +100,6 @@ footer {
     .boxes {
         flex-direction: column;
         margin-bottom: 50px;
+        align-items: center;
     }
 }
