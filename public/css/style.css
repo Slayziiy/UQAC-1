@@ -66,6 +66,7 @@ main {
     flex-direction: row;
     margin-top: 75px;
     width: 100%;
+    gap: 40px;
     outline: 1px solid red; 
 
     .left {
