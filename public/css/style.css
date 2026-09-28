@@ -61,10 +61,11 @@ main {
 
 .boxes {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    gap: 100px;
+    flex-direction: row;
     margin-top: 75px;
+    width: 100%;
+    /*outline: 1px solid red; */
 
     .left {
         max-width: 450px;
@@ -88,22 +89,15 @@ footer {
 
 /*Format mobile */
 @media screen and (max-width: 720px) {
-    .container {
-        gap: 50px;
-    }
-
     .boxes {
         display: flex;
         flex-direction: column;
     }
 }
 
-/* Format tablet */
-@media screen and (max-width: 768px) {
-    padding: 1.5rem;
-}
-
-/* Format desktop */
-@media screen and (min-width: 1024px) {
-    padding: 2rem;
+@media screen and (max-width: 1000px) {
+    .boxes {
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
 }
