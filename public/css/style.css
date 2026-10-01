@@ -29,6 +29,18 @@ nav {
     background-color: #e4951d;
 }
 
+nav .left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav .left img {
+    max-width: 100px;
+    height: auto;
+}
+
+
 nav .middle {
     display: flex;
     gap: 3rem;
