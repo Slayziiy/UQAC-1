@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
+/* ------------ Default styles ------------ */
 * {
     padding: 0;
     margin: 0;
@@ -7,6 +8,7 @@
     font-family: 'Lexend', sans-serif;
 }
 
+/* ------------ Body styles ------------ */
 body {
     display: flex;
     flex-direction: column;
@@ -18,10 +20,12 @@ a {
     color: inherit;
 }
 
+/* ------------ Navigation bar styles ------------ */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    align-items: center;
+    padding: 1rem 2rem;
     background-color: #e4951d;
 }
 
@@ -33,7 +37,27 @@ nav .middle {
 nav .middle a {
     color: #000;
     font-weight: 500;
+    position: relative;
     transition: all 0.3s ease-in-out;
+}
+
+nav .middle a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+nav .middle a:hover {
+    color: #fff;
+}
+
+nav .middle a:hover::after {
+    width: 100%;
 }
 
 nav .right {
@@ -44,10 +68,29 @@ nav .right {
 nav .right a {
     color: #000;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 2px solid #000;
     transition: all 0.3s ease-in-out;
-
 }
 
+nav .right .login-button:hover {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+nav .right .register-button {
+    background-color: #000;
+    color: #e4951d;
+}
+
+nav .right .register-button:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+/* ------------ Mainstyles ------------ */
 main {
     flex: 1;
     background-color: #f8e5b5;
@@ -64,7 +107,7 @@ main {
     justify-content: space-around;
     text-align: justify;
     flex-direction: row;
-    margin-top: 75px;
+    margin-top: 4.5rem;
     width: 100%;
     gap: 40px;
     outline: 1px solid red; 
@@ -78,29 +121,46 @@ main {
 
         img {
             border-radius: 20px;
+            
         }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
 }
 
+/* ------------ Footer styles ------------ */
 footer {
     text-align: center;
     padding: 12px;
-    background-color: #1b7aa0
+    background-color: #1b7aa0;
 }
 
-/*Format mobile */
-@media screen and (max-width: 720px) {
+/* ------------ Middle format styles ------------ */
+@media screen and (max-width: 1000px) {
     .boxes {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        gap: 20px;
+    }
+
+    .boxes .left,
+    .boxes .right {
+        max-width: 350px;
     }
 }
 
-@media screen and (max-width: 1000px) {
+/* ------------ Small format styles ------------ */
+@media screen and (max-width: 720px) {
     .boxes {
         flex-direction: column;
-        margin-bottom: 50px;
         align-items: center;
+        gap: 30px;
+    }
+
+    .boxes .left,
+    .boxes .right {
+        max-width: 100%;
     }
 }
