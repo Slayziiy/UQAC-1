@@ -173,6 +173,58 @@ footer {
     background-color: #1b7aa0;
 }
 
+/*Form Container Styles*/
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 35px;
+
+        span {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin-left: 10px;
+                margin-bottom: 5px;
+            }
+
+            input {
+                background-color: beige;
+                border: none;
+                padding: 10px;
+                border-radius: 15px;
+            }
+
+            
+        }
+
+        button {
+            background-color: beige;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 15px;
+            margin-top: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: rgb(241, 241, 181);
+        }
+    }
+}
 /* ------------ Middle format styles ------------ */
 @media screen and (max-width: 1000px) {
     .boxes {
