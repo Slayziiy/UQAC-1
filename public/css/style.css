@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
+/* ------------ Default styles ------------ */
 * {
     padding: 0;
     margin: 0;
@@ -7,6 +8,7 @@
     font-family: 'Lexend', sans-serif;
 }
 
+/* ------------ Body styles ------------ */
 body {
     display: flex;
     flex-direction: column;
@@ -18,11 +20,26 @@ a {
     color: inherit;
 }
 
+/* ------------ Navigation bar styles ------------ */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #e4951d;
 }
+
+nav .left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav .left img {
+    max-width: 100px;
+    height: auto;
+}
+
 
 nav .middle {
     display: flex;
@@ -32,7 +49,27 @@ nav .middle {
 nav .middle a {
     color: #000;
     font-weight: 500;
+    position: relative;
     transition: all 0.3s ease-in-out;
+}
+
+nav .middle a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+nav .middle a:hover {
+    color: #fff;
+}
+
+nav .middle a:hover::after {
+    width: 100%;
 }
 
 nav .right {
@@ -43,30 +80,184 @@ nav .right {
 nav .right a {
     color: #000;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 2px solid #000;
     transition: all 0.3s ease-in-out;
 }
 
+nav .right .login-button:hover {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+nav .right .register-button {
+    background-color: #000;
+    color: #e4951d;
+}
+
+nav .right .register-button:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+/* ------------ Mainstyles ------------ */
 main {
     flex: 1;
+    background-color: #f8e5b5;
+
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 4.5rem 2rem;
+}
+
+.boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+
+    .left {
+        max-width: 450px;
+    }
+
+    .right {
+        max-width: 450px;
+
+        img {
+            border-radius: 20px;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    p {
+    text-align: justify;
+    }
+}
+
+  /*outline: 1px solid red; */
+.card {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #e0d2a0;
+    border-radius: 16px;
+    padding: 2.5rem;
+    background-color: #fdf6e3;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    border-color: #e4951d;
+}
+
+/* ------------ Footer styles ------------ */
 footer {
-    background-color: rgba(20, 20, 20, 0.1);
     text-align: center;
     padding: 12px;
+    background-color: #1b7aa0;
 }
 
-/*Format mobile */
-@media screen and (max-width: 480px) {
-    padding: 1rem;
+/*Form Container Styles*/
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 450px;
+    width: 100%;
+    margin: 4.5rem auto;
+    height: auto;
+
+    h1 {
+        margin-bottom: 1.5rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 35px;
+
+        span {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin-left: 10px;
+                margin-bottom: 5px;
+            }
+
+            input {
+                background-color: #fff;
+                border: 2px solid #e0d2a0;
+                padding: 10px;
+                border-radius: 15px;
+                transition: border-color 0.3s ease-in-out;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #e4951d;
+            }
+        }
+
+        button {
+            background-color: #e4951d;
+            color: #000;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 15px;
+            margin-top: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: #c97e12;
+        }
+    }
+}
+/* ------------ Middle format styles ------------ */
+@media screen and (max-width: 1000px) {
+    .boxes {
+        gap: 20px;
+    }
+
+    .boxes .left,
+    .boxes .right {
+        max-width: 350px;
+    }
 }
 
-/* Format tablet */
-@media screen and (max-width: 768px) {
-    padding: 1.5rem;
-}
+/* ------------ Small format styles ------------ */
+@media screen and (max-width: 720px) {
+    .boxes {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
 
-/* Format desktop */
-@media screen and (min-width: 1024px) {
-    padding: 2rem;
+    .boxes .left,
+    .boxes .right {
+        max-width: 100%;
+    }
 }
