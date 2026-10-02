@@ -179,7 +179,14 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    max-width: 450px;
+    width: 100%;
+    margin: 4.5rem auto;
+    height: auto;
+
+    h1 {
+        margin-bottom: 1.5rem;
+    }
 
     form {
         display: flex;
@@ -199,17 +206,22 @@ footer {
             }
 
             input {
-                background-color: beige;
-                border: none;
+                background-color: #fff;
+                border: 2px solid #e0d2a0;
                 padding: 10px;
                 border-radius: 15px;
+                transition: border-color 0.3s ease-in-out;
             }
 
-            
+            input:focus {
+                outline: none;
+                border-color: #e4951d;
+            }
         }
 
         button {
-            background-color: beige;
+            background-color: #e4951d;
+            color: #000;
             border: none;
             padding: 10px;
             font-size: 20px;
@@ -221,7 +233,7 @@ footer {
 
         button:hover {
             cursor: pointer;
-            background-color: rgb(241, 241, 181);
+            background-color: #c97e12;
         }
     }
 }
