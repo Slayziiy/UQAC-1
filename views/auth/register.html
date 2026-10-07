@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Messageri(re) - Inscription</title>
     <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../../public/js/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -25,7 +26,58 @@
     </header>
 
     <main>
-        
+        <div class="form-container card">
+            <h1>Créer un compte</h1>
+
+            <form id="register-form" novalidate>
+                <span>
+                    <label for="pseudo"><i class="fa-regular fa-circle-user"></i> Pseudo <span class="required">*</span></label>
+                    <input type="text" id="pseudo" name="pseudo" autocomplete="username" required>
+                    <small class="field-error" id="pseudo-error"></small>
+                </span>
+
+                <span>
+                    <label for="email"><i class="fa-regular fa-envelope"></i> Adresse mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                    <small class="field-error" id="email-error"></small>
+                </span>
+
+                <span>
+                    <label for="firstname"><i class="fa-regular fa-id-card"></i> Prénom <span class="optional">(optionnel)</span></label>
+                    <input type="text" id="firstname" name="firstname" autocomplete="given-name">
+                </span>
+
+                <span>
+                    <label for="lastname"><i class="fa-regular fa-id-card"></i> Nom <span class="optional">(optionnel)</span></label>
+                    <input type="text" id="lastname" name="lastname" autocomplete="family-name">
+                </span>
+
+                <span>
+                    <label for="password"><i class="fa-solid fa-key"></i> Mot de passe <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" autocomplete="new-password" required>
+                    <small class="field-error" id="password-error"></small>
+                </span>
+
+                <ul class="password-rules" id="password-rules">
+                    <li data-rule="length"><i class="fa-regular fa-circle-xmark"></i> 16 caractères minimum</li>
+                    <li data-rule="uppercase"><i class="fa-regular fa-circle-xmark"></i> Une majuscule</li>
+                    <li data-rule="number"><i class="fa-regular fa-circle-xmark"></i> Un chiffre</li>
+                    <li data-rule="special"><i class="fa-regular fa-circle-xmark"></i> Un caractère spécial (!?@#$%&amp;*...)</li>
+                </ul>
+
+                <span>
+                    <label for="password-confirm"><i class="fa-solid fa-lock"></i> Confirmer le mot de passe <span class="required">*</span></label>
+                    <input type="password" id="password-confirm" name="password-confirm" autocomplete="new-password" required>
+                    <small class="field-error" id="password-confirm-error"></small>
+                </span>
+
+                <p class="form-note"><span class="required">*</span> Champs obligatoires</p>
+
+                <small class="field-error" id="form-error"></small>
+
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
     </main>
 </body>
 </html>
