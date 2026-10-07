@@ -1,12 +1,11 @@
 /* ============================================================
-   Messageri(re) - script.js
-   Règles de validation des formulaires (sécurité de base côté client)
+   Delta-talk - script.js
+   Règles de validation des formulaires 
 
    IMPORTANT : cette validation côté client est un confort pour
    l'utilisateur (retour immédiat), elle ne remplace PAS une
    validation côté serveur. Quand Supabase sera branché, toutes
-   ces règles devront être revérifiées côté back (ou via les
-   règles de Supabase Auth / une policy) avant d'écrire en base.
+   ces règles devront être revérifiées avant d'écrire en base.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,16 +36,8 @@ function initRegisterForm(form) {
         updateRuleDisplay('uppercase', results.uppercase);
         updateRuleDisplay('number', results.number);
         updateRuleDisplay('special', results.special);
-
-        // On n'affiche pas une liste de caractères interdits en permanence :
-        // on prévient seulement si l'utilisateur en a effectivement tapé un.
-        const offendingChars = getForbiddenChars(value);
-        if (offendingChars.length > 0) {
-            const list = offendingChars.map(c => `« ${c} »`).join(', ');
-            setFieldError('password-error', `Caractère non autorisé : ${list}`);
-        } else {
-            clearFieldError('password-error');
-        }
+        updateRuleDisplay('forbidden', results.noForbiddenChars);
+        clearFieldError('password-error');
     });
 
     passwordConfirmInput.addEventListener('input', () => {
@@ -62,15 +53,8 @@ function initRegisterForm(form) {
             uppercase: /[A-Z]/.test(value),
             number: /[0-9]/.test(value),
             special: specialCharsRegex.test(value),
-            noForbiddenChars: getForbiddenChars(value).length === 0
+            noForbiddenChars: value.length > 0 && !forbiddenCharsRegex.test(value)
         };
-    }
-
-    // Retourne la liste (sans doublons) des caractères interdits
-    // réellement présents dans la valeur, pour un message d'erreur ciblé.
-    function getForbiddenChars(value) {
-        const matches = value.match(new RegExp(forbiddenCharsRegex.source, 'g'));
-        return matches ? [...new Set(matches)] : [];
     }
 
     function updateRuleDisplay(ruleName, isValid) {
@@ -170,31 +154,6 @@ function initRegisterForm(form) {
             firstname: firstname || null,
             lastname: lastname || null
         };
-
-        /* ------------------------------------------------------------
-           TODO (Supabase) :
-           Remplacer ce bloc par l'appel réel à Supabase, par exemple :
-
-           const { data, error } = await supabase.auth.signUp({
-               email: registrationData.email,
-               password: registrationData.password
-           });
-
-           if (error) {
-               setFieldError('form-error', "Une erreur est survenue : " + error.message);
-               return;
-           }
-
-           // Puis insérer les infos complémentaires dans la table "profiles" :
-           await supabase.from('profiles').insert({
-               id: data.user.id,
-               pseudo: registrationData.pseudo,
-               firstname: registrationData.firstname,
-               lastname: registrationData.lastname
-           });
-
-           // Puis rediriger l'utilisateur (ex: vers login.html ou l'accueil).
-           ------------------------------------------------------------ */
 
         console.log('Formulaire valide, données prêtes pour Supabase :', registrationData);
         // Simulation temporaire en attendant le branchement Supabase :
