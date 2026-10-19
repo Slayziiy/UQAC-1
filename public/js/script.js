@@ -1,13 +1,3 @@
-/* ============================================================
-   Delta-talk - script.js
-   Règles de validation des formulaires 
-
-   IMPORTANT : cette validation côté client est un confort pour
-   l'utilisateur (retour immédiat), elle ne remplace PAS une
-   validation côté serveur. Quand Supabase sera branché, toutes
-   ces règles devront être revérifiées avant d'écrire en base.
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('register-form');
     if (registerForm) {
@@ -23,12 +13,9 @@ function initRegisterForm(form) {
 
     const rulesList = document.getElementById('password-rules');
 
-    // Caractères interdits dans le mot de passe : / \ < > " ' ` ;
-    // (évite les soucis d'injection basique, de casse d'URL, etc.)
     const forbiddenCharsRegex = /[\/\\<>'"`;]/;
     const specialCharsRegex = /[!@#$%^&*()_\-+=\[\]{}.,?]/;
 
-    // Met à jour le checklist visuel pendant que l'utilisateur tape
     passwordInput.addEventListener('input', () => {
         const value = passwordInput.value;
         const results = checkPasswordRules(value);
@@ -76,7 +63,6 @@ function initRegisterForm(form) {
     }
 
     function isValidEmail(value) {
-        // Vérification simple côté client, Supabase validera aussi côté serveur.
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     }
 
@@ -86,7 +72,6 @@ function initRegisterForm(form) {
 
         let isFormValid = true;
 
-        // --- Pseudo ---
         const pseudo = pseudoInput.value.trim();
         if (pseudo.length === 0) {
             setFieldError('pseudo-error', 'Le pseudo est obligatoire.');
@@ -98,7 +83,6 @@ function initRegisterForm(form) {
             clearFieldError('pseudo-error');
         }
 
-        // --- Email ---
         const email = emailInput.value.trim();
         if (email.length === 0) {
             setFieldError('email-error', 'L\'adresse mail est obligatoire.');
@@ -110,7 +94,6 @@ function initRegisterForm(form) {
             clearFieldError('email-error');
         }
 
-        // --- Mot de passe ---
         const password = passwordInput.value;
         const rules = checkPasswordRules(password);
         const allRulesValid = Object.values(rules).every(Boolean);
@@ -125,7 +108,6 @@ function initRegisterForm(form) {
             clearFieldError('password-error');
         }
 
-        // --- Confirmation du mot de passe ---
         const passwordConfirm = passwordConfirmInput.value;
         if (passwordConfirm.length === 0) {
             setFieldError('password-confirm-error', 'Merci de confirmer le mot de passe.');
@@ -142,8 +124,6 @@ function initRegisterForm(form) {
             return;
         }
 
-        // Prénom / Nom (optionnels, pas de contrainte de sécurité particulière,
-        // juste un nettoyage des espaces superflus)
         const firstname = document.getElementById('firstname').value.trim();
         const lastname = document.getElementById('lastname').value.trim();
 
@@ -156,8 +136,9 @@ function initRegisterForm(form) {
         };
 
         console.log('Formulaire valide, données prêtes pour Supabase :', registrationData);
-        // Simulation temporaire en attendant le branchement Supabase :
         setFieldError('form-error', '');
+
+        // TODO CHANGE
         alert('Inscription simulée avec succès (branchement base de données à venir).');
     });
 }

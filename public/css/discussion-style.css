@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f8e5b5;
+}
+
+.container {
+    display: grid;
+    gap: 1rem;
+    grid-template: "channels header-bar" min-content
+                   "channels discussion" 1fr
+                   / 100px 1fr;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.channels {
+    grid-area: channels;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    background-color: rgba(247, 176, 35, 0.8);
+    border-radius: 16px;
+    overflow-y: auto;
+}
+
+.channels ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.channels li {
+    padding: 0.75rem 0.25rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    cursor: pointer;
+    word-break: break-word;
+    transition: all 0.3s ease-in-out;
+}
+
+.channels li:hover {
+    background-color: #000;
+    color: #e4951d;
+}
+
+.header-bar {
+    grid-area: header-bar;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #fdf6e3;
+    border: 1px solid #e0d2a0;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.header-bar button {
+    padding: 0.5rem 1rem;
+    border: 2px solid #000;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #000;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.header-bar button:hover {
+    background-color: #e4951d;
+    border-color: #e4951d;
+}
+
+.header-bar button:last-child {
+    background-color: #000;
+    color: #e4951d;
+}
+
+.header-bar button:last-child:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+.discussion {
+    grid-area: discussion;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background-color: #fdf6e3;
+    border: 1px solid #e0d2a0;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid #e0d2a0;
+    border-left: 5px solid #e4951d;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.message:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateX(4px);
+}
+
+.username {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e4951d;
+    white-space: nowrap;
+}
+
+.username::after {
+    content: ' :';
+}
+
+.text {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #000;
+    word-break: break-word;
+}
+
+.message-form {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background-color: #f4ead0;
+    border-top: 1px solid #e0d2a0;
+}
+
+.message-form input {
+    flex: 1;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid #e0d2a0;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.message-form input::placeholder {
+    color: #8a7b5c;
+}
+
+.message-form input:focus {
+    outline: none;
+    border-color: #e4951d;
+}
+
+.message-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #e4951d;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.message-form button:hover {
+    background-color: #c97e12;
+}
+
+@media screen and (max-width: 720px) {
+    .container {
+        grid-template: "header-bar" min-content
+                       "channels" min-content
+                       "discussion" 1fr
+                       / 1fr;
+        height: 100vh;
+    }
+
+    .channels {
+        padding: 0.5rem;
+    }
+
+    .channels ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .channels li {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .message {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+}
