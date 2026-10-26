@@ -22,49 +22,33 @@
 - Utilisable sur téléphone Oui
  
 ### Arborescence :
-
-└───UQAC-1
-    │   README.md
-    │
-    ├───.idea
-    │       .gitignore
-    │       git_toolbox_prj.xml
-    │       modules.xml
-    │       projet-fil-rouge.iml
-    │       vcs.xml
-    │
-    ├───public
-    │   ├───css
-    │   │       discussion-style.css
-    │   │       register-additions.css
-    │   │       style.css
-    │   │
-    │   ├───img
-    │   │       chat.png
-    │   │       logo.png
-    │   │
-    │   └───js
-    │           script.js
-    │           supabase.js
-    │
-    └───views
-        │   index.html
-        │   ranking.html
-        │
-        ├───auth
-        │       login.html
-        │       register.html
-        │
-        ├───exception
-        │       404.html
-        │
-        ├───legal
-        │       guide.html
-        │       legals.html
-        │
-        └───user
-                discussion.html
-                profile.html
+UQAC-1/
+├── public/
+│   ├── css/
+│   │   ├── discussion-style.css
+│   │   ├── register-additions.css
+│   │   └── style.css
+│   ├── img/
+│   │   ├── chat.png
+│   │   └── logo.png
+│   └── js/
+│       ├── script.js
+│       └── supabase.js
+├── views/
+│   ├── auth/
+│   │   ├── login.html
+│   │   └── register.html
+│   ├── exception/
+│   │   └── 404.html
+│   ├── legal/
+│   │   ├── guide.html
+│   │   └── legals.html
+│   └── user/
+│       ├── discussion.html
+│       └── profile.html
+├── index.html
+├── ranking.html
+└── README.md
 
 ## Palette de couleurs :
 
