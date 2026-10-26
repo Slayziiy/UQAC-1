@@ -2,75 +2,82 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messageri(re) - Accueil</title>
     <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../public/js/script.js" defer></script>
 </head>
-<body>
+<body data-root=".">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <header>
-        <nav>
+        <nav aria-label="Navigation principale">
             <div class="left">
-                <a href="#"><img src="../public/img/logo.png" alt="Logo"></a>
+                <a href="index.html"><img src="../public/img/logo.png" alt="Logo Messageri(re) Delta-Talk"></a>
             </div>
             <div class="middle">
-                <a href="#" class="active"><i class="fa-solid fa-house"></i> Accueil</a>
-                <a href="legal/guide.html"><i class="fa-solid fa-book"></i> Guide</a>
-                <a href="ranking.html"><i class="fa-solid fa-trophy"></i> Classement</a>
+                <a href="index.html" class="active"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
+                <a href="legal/guide.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Guide</a>
+                <a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Classement &amp; Quiz</a>
             </div>
             <div class="right">
-                <a href="auth/login.html" class="login-button"><i class="fa-solid fa-arrow-right-to-bracket"></i> Connexion</a>
-                <a href="auth/register.html" class="register-button"><i class="fa-solid fa-user"></i> Inscription</a>
+                <a href="auth/login.html" class="login-button"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i> Connexion</a>
+                <a href="auth/register.html" class="register-button"><i class="fa-solid fa-user" aria-hidden="true"></i> Inscription</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="container">
-            <div class="card">
-                <h1>Delta-Talk</h1>
+            <article class="card">
+                <h1>Delta-Talk — Messageri(re)</h1>
                 <div class="boxes">
                     <div class="left">
                         <h2>Qu'est-ce que Delta-Talk ?</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorum, laudantium eos placeat necessitatibus non reiciendis veniam exercitationem numquam omnis harum architecto eligendi natus est, assumenda illo. Explicabo, nulla! Recusandae.
-                            </p>
+                        <p>
+                            Delta-Talk est une messagerie instantanée qui mélange l'éducatif et le ludique. Elle est conçue pour stimuler le calcul mental tout en discutant en temps réel avec les autres membres de la communauté.
+                        </p>
                         <h2>Comment ça marche ?</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorum, laudantium eos placeat necessitatibus non reiciendis veniam exercitationem numquam omnis harum architecto eligendi natus est, assumenda illo. Explicabo, nulla! Recusandae.
-                            </p>
+                        <p>
+                            Chaque message envoyé coûte 1 jeton. Pour obtenir des jetons et grimper dans le classement général, il suffit de résoudre nos quiz de mathématiques générés aléatoirement.
+                        </p>
                     </div>
-
                     <div class="right">
-                        <!-- Images -->
-                        <img src="https://imgs.search.brave.com/eF5RARjCDVRJFVkOcMeJcpg8ijK9a8QCg4w12ZDSlxI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvNDk3/NjcxMi9wZXhlbHMt/cGhvdG8tNDk3Njcx/Mi5qcGVnP2NzPXRp/bnlzcmdiJmRwcj0x/Jnc9NTAw" alt="">
+                        <img src="/public/img/chat.png" alt="Étudiants échangeant sur un ordinateur portable" loading="lazy">
                     </div>
                 </div>
-            </div>
-            <div class="card">
+            </article>
+
+            <article class="card">
                 <div class="boxes">
                     <div class="left">
                         <h2>Le fonctionnement du classement</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorum, laudantium eos placeat necessitatibus non reiciendis veniam exercitationem numquam omnis harum architecto eligendi natus est, assumenda illo. Explicabo, nulla! Recusandae.
-                            </p>
-                        <h2>Et le quizz dans tout ça ?! </h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorum, laudantium eos placeat necessitatibus non reiciendis veniam exercitationem numquam omnis harum architecto eligendi natus est, assumenda illo. Explicabo, nulla! Recusandae.
-                            </p>
+                        <p>
+                            Delta-Talk intègre un classement compétitif en temps réel. Plus la difficulté du calcul résolu est élevée, plus vous remportez de jetons et de points d'expérience pour faire évoluer votre profil.
+                        </p>
+                        <h2>Et les salons personnalisés ?</h2>
+                        <p>
+                            En plus du salon général, chaque membre inscrit dispose du droit de créer son propre salon thématique pour discuter avec ses amis tout en relevant des défis mathématiques directement depuis la conversation.
+                        </p>
                     </div>
-
                     <div class="right">
-                        <!-- Images -->
-                        <img src="https://imgs.search.brave.com/eF5RARjCDVRJFVkOcMeJcpg8ijK9a8QCg4w12ZDSlxI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvNDk3/NjcxMi9wZXhlbHMt/cGhvdG8tNDk3Njcx/Mi5qcGVnP2NzPXRp/bnlzcmdiJmRwcj0x/Jnc9NTAw" alt="">
+                        <img src="https://imgs.search.brave.com/g0kXQhqkd1YRslF8PBoYDP5u3pAXZ3hj72VeBHU4jCw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L3ZlY3RldXJzLXBy/ZW1pdW0vaW50ZXJm/YWNlLXV0aWxpc2F0/ZXVyLWNsYXNzZW1l/bnQtZ2xhc3Ntb3Jw/aGlzbS1vcmFuZ2Ut/dmlmLXBhbm5lYXUt/dGFibGVhdS1ib3Jk/LWNsYXNzZW1lbnQt/bW9kZXJuZS1lbGVn/YW50LW5vdGVzLW1h/dGNocy1wb3VyLWlu/dGVyZmFjZS11dGls/aXNhdGV1ci1qZXV4/LW1vYmlsZXMtcGMt/bW9kZWxlLWNvbmNl/cHRpb24tZnV0dXJp/c3RlLW1pbmltYWxp/c3RlLWVwdXJlXzI3/ODI2MS0yNjQ4Lmpw/Zz9zZW10PWFpc19o/eWJyaWQmdz03NDAm/cT04MA" alt="Résolution de quiz mathématiques" loading="lazy">
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
     </main>
 
     <footer>
-        <!-- Liens utiles -->
-        <p>&copy; 2026 Messageri(re). Tous droits réservés.</p>
+        <div class="footer-links">
+            <a href="index.html">Accueil</a>
+            <a href="legal/guide.html">Guide d'utilisation</a>
+            <a href="ranking.html">Classement</a>
+            <a href="legal/legals.html">Mentions légales</a>
+        </div>
+        <p>&copy; 2026 Delta-Talk -- Projet 8WEB101 par Paul MONTAIGNAC &amp; Tom MAETIE.</p>
     </footer>
 </body>
 </html>

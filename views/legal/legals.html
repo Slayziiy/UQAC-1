@@ -2,30 +2,66 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messageri(re) - Mentions légales</title>
     <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../public/js/script.js" defer></script>
 </head>
-<body>
+<body data-root="..">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <header>
-        <nav>
+        <nav aria-label="Navigation principale">
             <div class="left">
-                <a href="../index.html"><img src="../../public/img/logo.png" alt="Logo"></a>
+                <a href="../index.html"><img src="../../public/img/logo.png" alt="Logo Messageri(re)"></a>
             </div>
             <div class="middle">
-                <a href="index.html"><i class="fa-solid fa-house"></i> Accueil</a>
-                <a href="legal/guide.html"><i class="fa-solid fa-book"></i> Guide</a>
-                <a href="ranking.html"><i class="fa-solid fa-trophy"></i> Classement</a>
+                <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
+                <a href="guide.html"><i class="fa-solid fa-book" aria-hidden="true"></i> Guide</a>
+                <a href="../ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Classement &amp; Quiz</a>
             </div>
-            <div class="right">
-                <a href="auth/login.html" class="login-button"><i class="fa-solid fa-arrow-right-to-bracket"></i> Connexion</a>
-                <a href="auth/register.html" class="register-button"><i class="fa-solid fa-user"></i> Inscription</a>
-            </div>
+            <div class="right"></div>
         </nav>
     </header>
 
-    <main>
-        <!-- <Sections> des pages -->
+    <main id="main-content">
+        <section class="container">
+            <article class="card">
+                <h1><i class="fa-solid fa-gavel" aria-hidden="true"></i> Mentions Légales &amp; Confidentialité</h1>
+
+                <h2>1. Éditeurs du site (Projet académique)</h2>
+                <p>
+                    Ce site web a été conçu et développé par Paul MONTAIGNAC et Tom MAETIE dans le cadre du cours 8WEB101 (Conception et programmation de sites Web) dirigé par le professeur Damien Brun à l'Université du Québec à Chicoutimi (UQAC), 555 boulevard de l'Université, Chicoutimi (Québec) G7H 2B1, Canada.
+                </p>
+
+                <h2>2. Hébergement et Base de données</h2>
+                <p>
+                    L'interface frontale du site est hébergée sur la plateforme GitHub Pages (GitHub Inc.). La persistance des messages, des salons et des comptes utilisateurs est assurée par le service infonuagique Supabase.
+                </p>
+
+                <h2>3. Données personnelles et stockage local</h2>
+                <p>
+                    Dans le cadre de ce projet universitaire de démonstration, seules les données strictement nécessaires au fonctionnement de la messagerie et du classement (pseudo, adresse courriel, score et jetons) sont conservées. Le site utilise exclusivement le stockage local du navigateur (localStorage) pour maintenir votre session active et mémoriser votre préférence de thème visuel (clair ou sombre), sans aucun pistage publicitaire tiers.
+                </p>
+
+                <h2>4. Modération et conditions d'utilisation</h2>
+                <p>
+                    Les utilisateurs s'engagent à respecter les règles de courtoisie élémentaires dans l'ensemble des salons de discussion. Tout comportement abusif ou tentative d'injection de contenu malveillant entraîne la révocation immédiate et définitive du compte.
+                </p>
+            </article>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Accueil</a>
+            <a href="guide.html">Guide d'utilisation</a>
+            <a href="../ranking.html">Classement</a>
+            <a href="legals.html">Mentions légales</a>
+        </div>
+        <p>&copy; 2026 Delta-Talk -- Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
