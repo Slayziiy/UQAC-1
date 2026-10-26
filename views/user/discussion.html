@@ -2,43 +2,136 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messageri(re) - Discussion</title>
     <link rel="stylesheet" href="../../public/css/discussion-style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
     <div class="container">
-        <div class="channels">
-            <ul>
-                <li># Général</li>
-            </ul>
-        </div>
-
-        <div class="header-bar">
-            <button>Paramètres</button>
-            <button>Se déconnecter</button>
-        </div>
-
-        <div class="discussion">
-            <div class="messages">
-                <div class="message">
-                    <span class="username">Tom</span>
-                    <span class="text">Bonjour à tous !</span>
-                </div>
-                <div class="message">
-                    <span class="username">Paul</span>
-                    <span class="text">Salut ! Comment ça va ?</span>
-                </div>
+        <aside class="channels" aria-label="Salons de discussion">
+            <div class="channels-top">
+                <h2 class="channels-title">Salons</h2>
+                <ul id="channels-list">
+                    <li><button type="button" class="active-channel"># Général</button></li>
+                </ul>
             </div>
+            <button type="button" id="open-create-channel-btn" class="add-channel-btn">
+                + Créer mon salon (1 max)
+            </button>
+        </aside>
+
+        <header class="header-bar">
+            <div class="header-info">
+                <span id="current-channel-name" class="current-channel-badge"># Général</span>
+                <span class="token-badge" aria-live="polite">
+                    <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                    <span id="user-token-count">0 jeton(s)</span>
+                </span>
+            </div>
+
+            <nav class="header-actions" aria-label="Actions de la messagerie">
+                <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
+                <a href="../ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Classement</a>
+                <a href="profile.html"><i class="fa-solid fa-user" aria-hidden="true"></i> Profil</a>
+                <button type="button" id="open-quiz-btn" class="quiz-trigger-btn">
+                    <i class="fa-solid fa-calculator" aria-hidden="true"></i> Quiz Maths
+                </button>
+                <button type="button" id="open-rules-btn">
+                    <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Règles
+                </button>
+                <button type="button" id="open-settings-btn">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i> Paramètres
+                </button>
+                <button type="button" id="logout-btn" class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Se déconnecter
+                </button>
+            </nav>
+        </header>
+
+        <main class="discussion">
+            <div id="messages-list" class="messages" role="log" aria-live="polite" aria-label="Messages du salon"></div>
+
             <form id="send-message-form" class="message-form">
-                <input id="form-input" type="text" placeholder="Écrire un message..." autocomplete="off">
-                <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                <input id="form-input" type="text" placeholder="Écrire un message..." autocomplete="off" aria-label="Votre message">
+                <button type="submit" aria-label="Envoyer le message"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
             </form>
+        </main>
+    </div>
+
+    <div id="quiz-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title" hidden>
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="quiz-modal-title"><i class="fa-solid fa-calculator"></i> Gagner des jetons</h2>
+                <button type="button" class="close-modal-btn" data-close-modal="quiz-modal" aria-label="Fermer">&times;</button>
+            </div>
+            <p>Résolvez ce calcul pour créditer immédiatement des jetons et des points :</p>
+            <div class="theme-selector">
+                <button type="button" class="theme-option-btn active" data-modal-diff="easy">Facile (+1 🪙)</button>
+                <button type="button" class="theme-option-btn" data-modal-diff="medium">Moyen (+2 🪙)</button>
+                <button type="button" class="theme-option-btn" data-modal-diff="hard">Difficile (+3 🪙)</button>
+            </div>
+            <div id="modal-quiz-question" class="modal-quiz-question" aria-live="polite">12 + 8 = ?</div>
+            <form id="modal-quiz-form" class="modal-form-row">
+                <input type="number" id="modal-quiz-answer" placeholder="Votre réponse..." required aria-label="Réponse mathématique">
+                <button type="submit" class="modal-action-btn">Valider</button>
+            </form>
+            <p id="modal-quiz-feedback" aria-live="polite"></p>
         </div>
     </div>
-    
+
+    <div id="rules-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="rules-modal-title" hidden>
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="rules-modal-title"><i class="fa-solid fa-scale-balanced"></i> Règlement de la communauté</h2>
+                <button type="button" class="close-modal-btn" data-close-modal="rules-modal" aria-label="Fermer">&times;</button>
+            </div>
+            <ol class="rules-list">
+                <li><strong>Respect mutuel</strong> — Les insultes, propos haineux, harcèlement ou discriminations sont strictement proscrits.</li>
+                <li><strong>Pas de spam ni de flood</strong> — Évitez d'envoyer des messages répétitifs ou incompréhensibles dans les salons.</li>
+                <li><strong>Sécurité et intégrité</strong> — Toute tentative d'exploitation technique, d'injection de code ou de triche sur le système de jetons est interdite.</li>
+                <li><strong>Salons personnalisés</strong> — Chaque membre a droit à la création d'un seul salon dont le titre doit rester courtois.</li>
+            </ol>
+            <div class="ban-warning">
+                Sanction : Tout non-respect de ce règlement entraînera la suppression des messages et le bannissement définitif du compte utilisateur.
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="settings-modal-title" hidden>
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="settings-modal-title"><i class="fa-solid fa-gear"></i> Paramètres d'affichage</h2>
+                <button type="button" class="close-modal-btn" data-close-modal="settings-modal" aria-label="Fermer">&times;</button>
+            </div>
+            <p>Choisissez l'apparence visuelle appliquée à l'ensemble du site :</p>
+            <div class="theme-selector">
+                <button type="button" id="theme-light-btn" class="theme-option-btn active">
+                    <i class="fa-solid fa-sun"></i> Thème Clair
+                </button>
+                <button type="button" id="theme-dark-btn" class="theme-option-btn">
+                    <i class="fa-solid fa-moon"></i> Thème Sombre
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="channel-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="channel-modal-title" hidden>
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="channel-modal-title"><i class="fa-solid fa-hashtag"></i> Créer mon salon</h2>
+                <button type="button" class="close-modal-btn" data-close-modal="channel-modal" aria-label="Fermer">&times;</button>
+            </div>
+            <p>Chaque utilisateur peut créer <strong>1 seul salon</strong> personnalisé visible par toute la communauté.</p>
+            <form id="create-channel-form" class="modal-form-row">
+                <input type="text" id="new-channel-name" placeholder="Nom du salon (ex: Aide-Maths)" maxlength="20" required aria-label="Nom du salon">
+                <button type="submit" class="modal-action-btn">Créer</button>
+            </form>
+            <p id="channel-modal-error" style="color: var(--danger);" aria-live="polite"></p>
+        </div>
+    </div>
+
     <script src="../../public/js/supabase.js"></script>
 </body>
 </html>

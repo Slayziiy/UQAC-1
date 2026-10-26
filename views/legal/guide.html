@@ -2,30 +2,69 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Messageri(re) - Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messageri(re) - Guide d'utilisation</title>
     <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../public/js/script.js" defer></script>
 </head>
-<body>
+<body data-root="..">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <header>
-        <nav>
+        <nav aria-label="Navigation principale">
             <div class="left">
-                <a href="../index.html"><img src="../../public/img/logo.png" alt="Logo"></a>
+                <a href="../index.html"><img src="../../public/img/logo.png" alt="Logo Messageri(re)"></a>
             </div>
             <div class="middle">
-                <a href="../index.html"><i class="fa-solid fa-house"></i> Accueil</a>
-                <a href="#" class="active"><i class="fa-solid fa-book"></i> Guide</a>
-                <a href="../ranking.html"><i class="fa-solid fa-trophy"></i> Classement</a>
+                <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a>
+                <a href="guide.html" class="active"><i class="fa-solid fa-book" aria-hidden="true"></i> Guide</a>
+                <a href="../ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Classement &amp; Quiz</a>
             </div>
-            <div class="right">
-                <a href="../auth/login.html" class="login-button"><i class="fa-solid fa-arrow-right-to-bracket"></i> Connexion</a>
-                <a href="../auth/register.html" class="register-button"><i class="fa-solid fa-user"></i> Inscription</a>
-            </div>
+            <div class="right"></div>
         </nav>
     </header>
 
-    <main>
-        
+    <main id="main-content">
+        <section class="container">
+            <article class="card">
+                <h1><i class="fa-solid fa-compass" aria-hidden="true"></i> Guide du parfait utilisateur de Delta-Talk</h1>
+                <p>
+                    Bienvenue sur le guide officiel de Messageri(re) / Delta-Talk. Notre plateforme associe discussion en temps réel et entraînement mathématique. Voici toutes les étapes pour bien démarrer.
+                </p>
+
+                <h2>1. Création de compte et jetons de départ</h2>
+                <p>
+                    Rendez-vous sur la page d'inscription pour choisir votre pseudo unique et définir un mot de passe robuste d'au moins 16 caractères. Dès votre inscription validée, votre compte est automatiquement crédité de 5 jetons offerts afin que vous puissiez envoyer vos premiers messages immédiatement.
+                </p>
+
+                <h2>2. Pourquoi faut-il des jetons pour discuter ?</h2>
+                <p>
+                    Sur Delta-Talk, chaque message envoyé dans un salon consomme 1 jeton. Lorsque votre solde atteint zéro, le champ d'écriture se verrouille temporairement. Vous devez alors résoudre au moins une question de mathématiques pour recharger votre stock de jetons.
+                </p>
+
+                <h2>3. Fonctionnement des quiz et du classement</h2>
+                <p>
+                    Vous pouvez répondre aux quiz directement depuis la fenêtre surgissante « Quiz Maths » située dans la messagerie, ou depuis la page Classement. Trois paliers sont proposés selon votre aisance. Le mode Facile rapporte 1 jeton et 10 points, le mode Moyen rapporte 2 jetons et 25 points, et le mode Difficile (équations et carrés) rapporte 3 jetons et 50 points.
+                </p>
+
+                <h2>4. Salons de discussion et personnalisation</h2>
+                <p>
+                    Tout le monde a accès au salon Général. De plus, chaque joueur connecté dispose de la possibilité de créer 1 salon personnel supplémentaire depuis la colonne de gauche de la messagerie. Enfin, le bouton Paramètres vous permet de basculer à tout moment entre le thème clair et le thème sombre.
+                </p>
+            </article>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">Accueil</a>
+            <a href="guide.html">Guide d'utilisation</a>
+            <a href="../ranking.html">Classement</a>
+            <a href="legals.html">Mentions légales</a>
+        </div>
+        <p>&copy; 2026 Messageri(re) — Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
