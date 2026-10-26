@@ -1,4 +1,5 @@
-# Projet de base : **Messagedrie**
+# Projet de base : **Delta-Talk**
+https://slayziiy.github.io/UQAC-1/views/
 
 ## Obectifs :
 - Faire communiquer plusieurs personnes entres-elles.
