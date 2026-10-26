@@ -56,3 +56,6 @@ UQAC-1/
 - `#e4951d` Orange doré
 - `#f8e5b5` Beige clair
 - `#1b7aa0` Bleu canard 
+
+
+Test effectué par une amie en cyber en France. On a cherché les failles les plus critiques et corrigées au plus vite. Un patch a été fait aujourd'hui pour protéger la base de données
