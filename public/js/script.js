@@ -348,6 +348,8 @@
     function initRegisterForm(form) {
         const pseudoInput = document.getElementById('pseudo');
         const emailInput = document.getElementById('email');
+        const firstnameInput = document.getElementById('firstname');
+        const lastnameInput = document.getElementById('lastname');
         const passwordInput = document.getElementById('password');
         const passwordConfirmInput = document.getElementById('password-confirm');
         const submitBtn = document.getElementById('register-submit-btn');
@@ -355,6 +357,7 @@
 
         const forbiddenCharsRegex = /[\/\\<>'"`;]/;
         const specialCharsRegex = /[!@#$%^&*()_\-+=\[\]{}.,?]/;
+        const validNameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s\-]+$/;
 
         passwordInput.addEventListener('input', () => {
             const value = passwordInput.value;
@@ -370,6 +373,8 @@
         passwordConfirmInput.addEventListener('input', () => clearFieldError('password-confirm-error'));
         pseudoInput.addEventListener('input', () => clearFieldError('pseudo-error'));
         emailInput.addEventListener('input', () => clearFieldError('email-error'));
+        firstnameInput?.addEventListener('input', () => clearFieldError('firstname-error'));
+        lastnameInput?.addEventListener('input', () => clearFieldError('lastname-error'));
 
         function checkPasswordRules(value) {
             return {
@@ -403,7 +408,24 @@
         }
 
         function isValidEmail(value) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && !forbiddenCharsRegex.test(value);
+        }
+
+        function validateOptionalName(value, errorId, label) {
+            if (value.length === 0) {
+                clearFieldError(errorId);
+                return true;
+            }
+            if (value.length < 2 || value.length > 40) {
+                setFieldError(errorId, `Le ${label} doit contenir entre 2 et 40 caractères.`);
+                return false;
+            }
+            if (!validNameRegex.test(value) || forbiddenCharsRegex.test(value)) {
+                setFieldError(errorId, `Le ${label} ne peut contenir que des lettres, espaces ou tirets.`);
+                return false;
+            }
+            clearFieldError(errorId);
+            return true;
         }
 
         form.addEventListener('submit', async (event) => {
@@ -416,8 +438,8 @@
             if (pseudo.length === 0) {
                 setFieldError('pseudo-error', 'Le pseudo est obligatoire.');
                 isFormValid = false;
-            } else if (pseudo.length < 3) {
-                setFieldError('pseudo-error', 'Le pseudo doit contenir au moins 3 caractères.');
+            } else if (pseudo.length < 3 || pseudo.length > 25) {
+                setFieldError('pseudo-error', 'Le pseudo doit contenir entre 3 et 25 caractères.');
                 isFormValid = false;
             } else if (forbiddenCharsRegex.test(pseudo)) {
                 setFieldError('pseudo-error', 'Le pseudo contient des caractères interdits.');
@@ -435,6 +457,16 @@
                 isFormValid = false;
             } else {
                 clearFieldError('email-error');
+            }
+
+            const firstname = firstnameInput ? firstnameInput.value.trim() : '';
+            const lastname = lastnameInput ? lastnameInput.value.trim() : '';
+
+            if (!validateOptionalName(firstname, 'firstname-error', 'prénom')) {
+                isFormValid = false;
+            }
+            if (!validateOptionalName(lastname, 'lastname-error', 'nom')) {
+                isFormValid = false;
             }
 
             const password = passwordInput.value;
@@ -466,9 +498,6 @@
                 setFieldError('form-error', 'Merci de corriger les champs en rouge avant de continuer.');
                 return;
             }
-
-            const firstname = document.getElementById('firstname').value.trim();
-            const lastname = document.getElementById('lastname').value.trim();
 
             try {
                 if (submitBtn) submitBtn.disabled = true;
