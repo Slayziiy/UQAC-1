@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delta-Talk - Inscription</title>
+    <title>Messageri(re) - Inscription</title>
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -33,24 +33,26 @@
             <form id="register-form" novalidate>
                 <span>
                     <label for="pseudo"><i class="fa-regular fa-circle-user" aria-hidden="true"></i> Pseudo <span class="required">*</span></label>
-                    <input type="text" id="pseudo" name="pseudo" autocomplete="username" required>
+                    <input type="text" id="pseudo" name="pseudo" maxlength="25" autocomplete="username" required>
                     <small class="field-error" id="pseudo-error" aria-live="polite"></small>
                 </span>
 
                 <span>
                     <label for="email"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Adresse mail <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" autocomplete="email" required>
+                    <input type="email" id="email" name="email" maxlength="100" autocomplete="email" required>
                     <small class="field-error" id="email-error" aria-live="polite"></small>
                 </span>
 
                 <span>
                     <label for="firstname"><i class="fa-regular fa-id-card" aria-hidden="true"></i> Prénom <span class="optional">(optionnel)</span></label>
-                    <input type="text" id="firstname" name="firstname" autocomplete="given-name">
+                    <input type="text" id="firstname" name="firstname" maxlength="40" autocomplete="given-name">
+                    <small class="field-error" id="firstname-error" aria-live="polite"></small>
                 </span>
 
                 <span>
                     <label for="lastname"><i class="fa-regular fa-id-card" aria-hidden="true"></i> Nom <span class="optional">(optionnel)</span></label>
-                    <input type="text" id="lastname" name="lastname" autocomplete="family-name">
+                    <input type="text" id="lastname" name="lastname" maxlength="40" autocomplete="family-name">
+                    <small class="field-error" id="lastname-error" aria-live="polite"></small>
                 </span>
 
                 <span>
@@ -88,7 +90,7 @@
             <a href="../ranking.html">Classement</a>
             <a href="../legal/legals.html">Mentions légales</a>
         </div>
-        <p>&copy; 2026 Delta-Talk -- Tous droits réservés.</p>
+        <p>&copy; 2026 Messageri(re) — Tous droits réservés.</p>
     </footer>
 </body>
 </html>
