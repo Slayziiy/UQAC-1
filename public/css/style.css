@@ -182,7 +182,10 @@ nav .right button {
     border-color: var(--accent);
     color: var(--text-main);
 }
-
+nav .right .theme-toggle-btn {
+    min-width: 115px;
+    justify-content: center;
+}
 nav .right .login-button:hover,
 nav .right .theme-toggle-btn:hover {
     background-color: #fff;
@@ -204,6 +207,17 @@ nav .right .register-button:hover {
     background-color: #fff;
     color: #000;
     border-color: #000;
+}
+@media screen and (min-width: 901px) {
+    nav {
+        position: relative;
+    }
+
+    nav .middle {
+        position: absolute;
+        left: 28%;
+        transform: translateX(-50%);
+    }
 }
 
 /* ------------ Contenu principal ------------ */
