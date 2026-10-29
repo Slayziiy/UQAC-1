@@ -163,7 +163,7 @@
             if (forceRebuild || divMessages.children.length === 0) {
                 divMessages.replaceChildren();
                 const emptyMsg = document.createElement('p');
-                emptyMsg.textContent = `Aucun message dans #${currentChannelName} pour le moment. Lancez la discussion !`;
+                emptyMsg.textContent = `Ce salon est public, il y a aucun message dans #${currentChannelName} pour le moment. Lancez la discussion !`;
                 emptyMsg.style.color = 'var(--text-muted)';
                 divMessages.appendChild(emptyMsg);
                 lastRenderedMessageId = 0;
