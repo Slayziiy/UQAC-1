@@ -23,6 +23,7 @@ https://slayziiy.github.io/UQAC-1/views/
 - Utilisable sur téléphone Oui
  
 ### Arborescence :
+```
 UQAC-1/
 ├── public/
 │   ├── css/
@@ -50,7 +51,7 @@ UQAC-1/
 ├── index.html
 ├── ranking.html
 └── README.md
-
+```
 ## Palette de couleurs :
 
 - `#e4951d` Orange doré
