@@ -1,4 +1,8 @@
 (() => {
+    // ---------------------------------------------------------------------
+    // 1. CONNEXION À SUPABASE ET CONFIGURATION
+    // ---------------------------------------------------------------------
+
     const config = {
         supabase_url: "https://snxzhnegslsbxsejnoaj.supabase.co",
         supabase_anon_key: "sb_publishable_nouoNfSWMdbGvex4PoJlNQ_IGbbiVMT"
@@ -29,6 +33,10 @@
     let userHasCreatedChannel = false;
     let lastRenderedMessageId = 0;
     let realtimeChannel = null;
+
+    // ---------------------------------------------------------------------
+    // 2. POINT D'ENTRÉE ET TEMPS RÉEL
+    // ---------------------------------------------------------------------
 
     document.addEventListener('DOMContentLoaded', async () => {
         if (!currentUser || !currentUser.session_token) {
@@ -67,6 +75,10 @@
         }, 3000);
     });
 
+    // ---------------------------------------------------------------------
+    // 3. SYNCHRONISATION ET AFFICHAGE DES JETONS
+    // ---------------------------------------------------------------------
+
     async function syncUserTokens() {
         if (!currentUser || !currentUser.session_token) return false;
 
@@ -101,6 +113,10 @@
             formInput.disabled = true;
         }
     }
+
+    // ---------------------------------------------------------------------
+    // 4. GESTION DES SALONS DE DISCUSSION
+    // ---------------------------------------------------------------------
 
     async function loadChannels() {
         const { data, error } = await client.rpc('get_channels_list', {
@@ -150,6 +166,10 @@
             channelsListEl.appendChild(li);
         });
     }
+
+    // ---------------------------------------------------------------------
+    // 5. AFFICHAGE ET ENVOI DES MESSAGES
+    // ---------------------------------------------------------------------
 
     async function renderMessages(forceRebuild = false) {
         const { data, error } = await client.rpc('get_channel_messages', {
@@ -268,6 +288,10 @@
         }
     }
 
+    // ---------------------------------------------------------------------
+    // 6. GESTION DES MODALES, PARAMÈTRES ET CRÉATION DE SALON
+    // ---------------------------------------------------------------------
+
     function openModal(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) modal.hidden = false;
@@ -378,6 +402,10 @@
             darkBtn.classList.toggle('active', current === 'dark');
         }
     }
+
+    // ---------------------------------------------------------------------
+    // 7. QUIZ DE MATHÉMATIQUES EN POPUP
+    // ---------------------------------------------------------------------
 
     async function initPopupQuiz() {
         let diff = 'easy';
