@@ -1,3 +1,4 @@
+// IIFE (Immediately Invoked Function Expression) : isole la portée des variables pour empêcher leur manipulation dans la console F12 et éviter les collisions globales.
 (() => {
     // ---------------------------------------------------------------------
     // 1. CONNEXION À SUPABASE
