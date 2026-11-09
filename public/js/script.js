@@ -1,4 +1,8 @@
 (() => {
+    // ---------------------------------------------------------------------
+    // 1. CONNEXION À SUPABASE
+    // ---------------------------------------------------------------------
+
     const SUPABASE_CONFIG = {
         url: "https://snxzhnegslsbxsejnoaj.supabase.co",
         anonKey: "sb_publishable_nouoNfSWMdbGvex4PoJlNQ_IGbbiVMT"
@@ -7,6 +11,10 @@
     const supabaseClient = window.supabase
         ? window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey)
         : null;
+
+    // ---------------------------------------------------------------------
+    // 2. THÈME CLAIR / SOMBRE
+    // ---------------------------------------------------------------------
 
     function applySavedTheme() {
         const savedTheme = localStorage.getItem('theme') || 'light';
@@ -21,6 +29,10 @@
         localStorage.setItem('theme', next);
         return next;
     }
+
+    // ---------------------------------------------------------------------
+    // 3. SESSION UTILISATEUR
+    // ---------------------------------------------------------------------
 
     function getCurrentUser() {
         try {
@@ -68,6 +80,10 @@
         return verifiedUser;
     }
 
+    // ---------------------------------------------------------------------
+    // 4. POINT D'ENTRÉE
+    // ---------------------------------------------------------------------
+
     document.addEventListener('DOMContentLoaded', async () => {
         applySavedTheme();
         await verifyAndSyncSession();
@@ -85,6 +101,10 @@
         const profileContainer = document.getElementById('profile-section');
         if (profileContainer) initProfilePage();
     });
+
+    // ---------------------------------------------------------------------
+    // 5. BARRE DE NAVIGATION
+    // ---------------------------------------------------------------------
 
     function updateNavigationHeader() {
         const navRight = document.querySelector('nav .right');
@@ -170,6 +190,10 @@
             navRight.append(loginLink, registerLink);
         }
     }
+
+    // ---------------------------------------------------------------------
+    // 6. PAGE CLASSEMENT + QUIZ
+    // ---------------------------------------------------------------------
 
     async function initRankingPage() {
         let currentDifficulty = 'easy';
@@ -312,6 +336,10 @@
         });
     }
 
+    // ---------------------------------------------------------------------
+    // 7. PAGE PROFIL
+    // ---------------------------------------------------------------------
+
     async function initProfilePage() {
         const rootPrefix = document.body.getAttribute('data-root') || '..';
         const verifiedUser = await verifyAndSyncSession();
@@ -344,6 +372,10 @@
             progressFillEl.style.width = `${progressPercent}%`;
         }
     }
+
+    // ---------------------------------------------------------------------
+    // 8. FORMULAIRE D'INSCRIPTION
+    // ---------------------------------------------------------------------
 
     function initRegisterForm(form) {
         const pseudoInput = document.getElementById('pseudo');
@@ -522,6 +554,10 @@
             }
         });
     }
+
+    // ---------------------------------------------------------------------
+    // 9. FORMULAIRE DE CONNEXION
+    // ---------------------------------------------------------------------
 
     function initLoginForm(form) {
         const pseudoInput = document.getElementById('login-pseudo');
